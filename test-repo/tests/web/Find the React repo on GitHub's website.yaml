@@ -1,0 +1,22 @@
+description: |
+  Navigate to the GitHub website, find the React repo using the
+  search functionality and go to the repo's homepage
+actors:
+  - actor: ACTOR1
+    segments:
+      - segment: 1
+        actions:
+          - description: Navigate to the google homepage
+            action: org.getopentest.selenium.NavigateTo
+            args:
+              url: https://www.google.com
+
+          - description: Enter "react" in the search box
+            action: org.getopentest.selenium.SendKeys
+            args:
+              locator: {css: "input[name='q']"}
+              text: react
+              sendEnter: true
+
+          
+

@@ -1,0 +1,85 @@
+# A string that specifies the type of actor that will be created. This
+# can be any string - as long as the same string is going to be used in
+# the test definition files - but it's recommended to use an uppercase
+# three-letter string (e.g. WEB, MOB, API, etc.)
+actorType: ACTOR1
+
+# Actor tags can be used to determine what test actor will execute a particular
+# test session when multiple actors of the required type are available.
+# actorTags: [ chrome ]
+
+# The valid values are: TRACE, DEBUG, INFO, WARN and ERROR
+logLevel: TRACE
+
+# The URL to the OpenTest server
+syncServerUrl: "http://localhost:3000"
+serverLogin: admin
+serverPassword: h!Kr8qUx
+
+# This password will be used when the test actor encrypts or decrypts data as
+# part of the $encrypt and $decrypt JavaScript APIs
+encryptionPassword: skdh@Lak
+
+# Determines whether decrypted secrets will be masked in log files
+maskSecrets: true
+
+# Selenium options
+selenium:
+    # seleniumServerUrl: http://127.0.0.1:9515
+    desiredCapabilities:
+        browserName: chrome
+        chromeOptions:
+            args: [ --start-maximized ]
+    chromeDriverExePath: C:\chromedriver\chromedriver.exe
+    chromeDriverExeArgs: [--start-maximized, --ignore-certificate-errors]
+    edgeDriverExePath:
+    firefoxDriverExePath: C:/Selenium/geckodriver.exe
+    # firefoxDriverExeArgs: []
+    ieDriverExePath:
+    # ieDriverExeArgs: []
+    operaDriverExePath: C:\chromedriver\chromedriver.exe
+    safariDriverExePath: /usr/bin/safaridriver
+    systemProperties:
+        # property1: value1
+        
+    # maximizeWindow: true
+    # fullScreen: true
+    # resolution: 1920x1080
+    scriptTimeout: 20
+    
+    # Determines how long to wait for a web element to appear in the page
+    # before failing the test
+    explicitWaitSec: 10
+    
+    # Instructs the test actor to reuse the same browser window every time a
+    # test is run. This can be very beneficial during test development, but is
+    # likely not wise to keep enabled in production.
+    reuseDriver: false
+
+# Appium options (only used for mobile testing)
+appium:
+    appiumServerUrl: http://127.0.0.1:4723/wd/hub
+    # For more information see the Appium project's documentation at
+    # http://appium.io/docs/en/writing-running-appium/caps/
+    desiredCapabilities:
+        app: /Users/username/application.app
+        automationName: XCUITest
+        deviceName: iPhone Simulator
+        platformName: iOS
+    # The amount of time the test actor should wait when searching for UI
+    # elements before throwing an exception
+    explicitWaitSec: 10
+    # Instructs the test actor to reuse the same app instance every time a
+    # test is run. This can be very beneficial during test development, but is
+    # likely not wise to keep enabled in production.
+    reuseDriver: false
+
+# Options for API testing (by the HttpRequest action)
+api:
+    # Allows the HTTP client to ignore the web server certificate. Useful for
+    # working with servers that are using self-signed certificates.
+    ignoreCert: false
+    # The HTTP proxy server to use when doing API testing using the the HttpRequest
+    # action. This is useful when behind a firewall, or for capturing the outbound
+    # HTTP requests with tools like Fiddler or Charles.
+    # httpProxy: localhost:8888

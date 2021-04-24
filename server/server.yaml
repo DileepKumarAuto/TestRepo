@@ -1,0 +1,37 @@
+# The path to the root of the test repository directory. If you're using
+# backslash characters in double quotes, you'll need to escape them.
+# (e.g. "C:\\opentest\\test-repo").
+testRepoDir: "C:\\Users\\User1\\opentest\\test-repo"
+
+# The port the server listens on.
+serverPort: 3000
+
+# Maximum number of test sessions that will be stored in the server's DB
+sessionHistoryMaxCount: 500
+
+# Minimum number of test sessions that will be stored in the server's DB
+sessionHistoryMinCount: 50
+
+# Maximum age of test sessions that will be stored in the server's DB. Older
+# sessions will be removed when they exceed the specified age.
+sessionHistoryAgeDays: 60
+
+# Number of seconds a test session will wait to acquire the necessary
+# test actors before it is cancelled
+acquireActorsTimeoutSec: 1200
+
+# Number of seconds a test session will be cancelled after, when there is
+# no activity (no actors are making any progress executing test segments)
+noActivityTimeoutSec: 3600
+
+# Actor groups can be used to limit the number of actors that can run in
+# parallel at any given time. This is useful when running against a cloud
+# provider, to avoid starting more sessions than the provider allows.
+actorGroups:
+  - name: BrowserStack
+    actorTags: bs
+    maxParallelSessions: 5
+    
+  - name: Compute-Intensive
+    actorTags: compute
+    maxParallelSessions: 2
